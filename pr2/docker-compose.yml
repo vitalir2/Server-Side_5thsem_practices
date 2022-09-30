@@ -1,16 +1,17 @@
 services:
-  db:
-    image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: dungeonmaster
-    volumes:
-      - ./sql-scripts:/docker-entrypoint-initdb.d
-  server:
-    build: .
+  drawer:
+    build:
+      context: ./drawer
     ports:
-      - 80:80
-    depends_on:
-      - db
-    volumes:
-      - ./src:/var/www/html/
+      - 8000:80
+  sort:
+    build:
+      context: ./sort
+    ports:
+      - 8001:80
+  console:
+    build:
+      context: ./console
+    ports:
+      - 8002:80
 

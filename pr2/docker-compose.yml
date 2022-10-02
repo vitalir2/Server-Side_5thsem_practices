@@ -4,14 +4,18 @@ services:
       context: ./drawer
     ports:
       - 8000:80
+    volumes:
+      - ./drawer/src:/var/www/html
   sort:
-    build:
-      context: ./sort
+    image: php:7.4-apache
     ports:
       - 8001:80
+    volumes:
+      - ./sort/src:/var/www/html
   console:
-    build:
-      context: ./console
+    image: php:7.4-apache
     ports:
       - 8002:80
+    volumes:
+      - ./console/src:/var/www/html
 

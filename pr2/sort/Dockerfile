@@ -1,3 +1,3 @@
 FROM php:7.4-apache
-COPY . /var/www/html/
+COPY ./sort.php /var/www/html/index.php
 

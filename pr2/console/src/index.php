@@ -16,7 +16,7 @@
     $command_name = strtok($command, " ");
     if ($command_name !== false && in_array($command_name, $whitelist)) {
       echo shell_exec($command);
-    } else {
+    } else if ($command != "") {
       echo "Not permitted command";
     }
     ?>

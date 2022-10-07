@@ -12,10 +12,16 @@ function insertionSort($arr) {
   return $arr;
 }
 
-$test_arr = array(1, 5, 2, 3, 19, 10);
-echo "Original Array: \n";
-echo implode(', ', $test_arr);
-echo "\n Sorted array :\n";
-print_r(insertionSort($test_arr));
+$test_arr = array();
+for ($i = 0; $i < 10; $i++) {
+  array_push($test_arr, mt_rand(1, 100));
+}
+
+echo "Original Array: ";
+echo implode(", ", $test_arr);
+echo "<br>";
+
+echo "\n Sorted array : ";
+echo implode(", ", insertionSort($test_arr));
 ?>
 

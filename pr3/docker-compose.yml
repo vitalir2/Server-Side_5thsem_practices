@@ -1,0 +1,12 @@
+services:
+    apache:
+        image: php:7.4.0-apache
+        container_name: vitalir_apache
+        depends_on:
+            - db
+    nginx:
+        image: nginx:1.23.1
+        container_name: vitalir_nginx
+    db:
+        image: mysql:8.0.31
+        container_name: vitalir_db

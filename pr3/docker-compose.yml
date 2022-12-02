@@ -10,3 +10,6 @@ services:
     db:
         image: mysql:8.0.31
         container_name: vitalir_db
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: restaurant_db

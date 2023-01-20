@@ -3,7 +3,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 try {
     $db_link = new mysqli("db", "root", "password", "restaurant_db");
     $query = "select name, price from dishes";
-    if ($result = $mysqli->query($query)) {
+    if ($result = $db_link->query($query)) {
         while ($row = $result->fetch_array(MYSQLI_BOTH)) {
             var_dump($row);
         }
@@ -15,5 +15,4 @@ try {
     echo "Exception message: " . $e->getMessage();
     exit;
 }
-$mysqli->close();
-?>
+$db_link->close();

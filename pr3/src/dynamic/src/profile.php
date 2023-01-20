@@ -4,7 +4,7 @@
   </head>
   <body>
 <?php
-$user = 1; // Get real user, dispay its data
+$user = 1; // Get real user, display its data
 echo $user;
 ?>
   </body>

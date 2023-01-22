@@ -8,12 +8,12 @@ function encode_password($password)
     return '{SHA}' . base64_encode(sha1($password, TRUE));
 }
 
-function insert_user($login, $password) {
+function update_admin_password($login, $password) {
     $encoded_password = encode_password($password);
 
     $connection = getConnection();
-    $statement = $connection->prepare("INSERT INTO authn(login, password) VALUES (?, ?)");
-    $statement->bind_param("ss", $login, $encoded_password);
+    $statement = $connection->prepare("UPDATE authn SET password = ? WHERE login = ?");
+    $statement->bind_param("ss", $encoded_password, $login);
     $result = $statement->execute();
     $connection->close();
     return $result;
@@ -22,10 +22,10 @@ function insert_user($login, $password) {
 if (isset($_POST["login"]) && $_POST["login"] != "") {
     $login = $_POST["login"];
     $password = $_POST["password"];
-    if (insert_user($login, $password)) {
-        echo "<p>Created admin $login<p/>";
+    if (update_admin_password($login, $password)) {
+        echo "<p>Updated admin password $login<p/>";
     } else {
-        echo "<p>Admin creation failed<p/>";
+        echo "<p>Update failed<p/>";
     }
     echo "<a href='admins.php'>Return to users page</a>";
 }

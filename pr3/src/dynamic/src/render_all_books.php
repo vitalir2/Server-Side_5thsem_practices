@@ -1,7 +1,9 @@
 <?php
+require "users_connection.php";
+
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 try {
-    $db_connection = new mysqli("db", "root", "root", "library_db");
+    $db_connection = getConnection();
     $query = "select name from books";
     if ($result = $db_connection->query($query)) {
         while ($row = $result->fetch_array()) {
